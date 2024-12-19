@@ -17,6 +17,13 @@ jobs:
       NEXT_WEBSITE_URL: ${{secrets.NEXT_WEBSITE_URL}}
 
     steps:
+    - name: Fix Permissions
+        run: |
+          sudo chown -R $USER:$USER /home/ubuntu/actions-runner/_work/cicd/cicd
+          sudo chmod -R u+w /home/ubuntu/actions-runner/_work/cicd/cicd
+    - name: Clean Workspace
+        run: |
+          sudo rm -rf /home/ubuntu/actions-runner/_work/cicd/cicd
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
