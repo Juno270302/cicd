@@ -21,8 +21,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        persist-credentials: false
         cache: 'npm'
-    - run: sudo npm ci
-    - run: sudo npm run build --if-present
+    - run: npm ci
+    - run: npm run build --if-present
 
